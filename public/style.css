@@ -18,14 +18,14 @@ html, body {
     padding-right: 10px;
     padding-left: 10px;
     width: 100%;
-    background-color: lightgrey;
+    background-color: #ffe6ff;
 
    }
   #chatbox input { 
     padding: 15px;
     margin: 8px;
     width: 97%;
-    background-color: #eedddd;
+    background-color: white;
     font-size: 15px;
     border-radius: 25px;
     margin-bottom: 10px;
@@ -93,7 +93,7 @@ html, body {
     margin-top: 0;
     height: 90%;
     overflow: auto;
-    background-color: #eedddd;
+    background-color: #ffe6ff;
   }
   #header {
     height: 60px;
