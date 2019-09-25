@@ -1,17 +1,14 @@
-var uname = "";
-var id = "";
-var socket = io();
 var typing = 0;
-var typingpm = 0;
+var pmTyping = 0;
 var stilltying = false;
 var listOfUsers = [];
 var typer = "";
+var uname = "";
+var id = "";
 var firsttyper = true;
 var conversations = [];
-var typingtext = " is now typing 💬";
-var mesId = 0;
-
-
+var typingNow = " is now typing 💬";
+var messageID = 0;
 
 $(document).ready(function () {
 
@@ -37,7 +34,7 @@ $(document).ready(function () {
                     conversations.push(msg.name + msg.id);
                     privateChat(msg.name + msg.id, msg.name, msg.message);
                 } else {
-                    $("#" + msg.name + msg.id).find("#typingpm").remove();
+                    $("#" + msg.name + msg.id).find("#pmTyping").remove();
                     $("#" + msg.name + msg.id).find("#pm").append("<div class='pmdivh'><div class='pmdiv' id='ntm'><p id='PM'><b>" + msg.name + "</b>: " + msg.message + "</p></div></div>");
                     $("#" + msg.name + msg.id).show();
                 }
@@ -51,10 +48,10 @@ $(document).ready(function () {
         socket.on('typing', function (msg) {
             if (msg.type == "private") {
                 if (msg.receipient == uname + id) {
-                    $("#" + msg.name + msg.id).find("#typingpm").remove();
-                    clearInterval(typingpm);
-                    $("#" + msg.name + msg.id).find("#pm").append("<div class='pmdivh' id='typingpm'><div class='typingPM'><p>" + msg.name + " is typing..." + "</p></div></div>");
-                    typingpm = setInterval(function () { $("#" + msg.name + msg.id).find("#typingpm").remove(); }, 1000);
+                    $("#" + msg.name + msg.id).find("#pmTyping").remove();
+                    clearInterval(pmTyping);
+                    $("#" + msg.name + msg.id).find("#pm").append("<div class='pmdivh' id='pmTyping'><div class='typingPM'><p>" + msg.name + " is typing..." + "</p></div></div>");
+                    pmTyping = setInterval(function () { $("#" + msg.name + msg.id).find("#pmTyping").remove(); }, 1000);
                 }
             } else if (msg.id != id && msg.name != uname) {
                 $("#typing").remove();
@@ -64,11 +61,11 @@ $(document).ready(function () {
                         firsttyper = false;
                         typer += msg.name;
                     } else {
-                        typingtext = " are typing 💬";
+                        typingNow = " are typing 💬";
                         typer += " & " + msg.name;
                     }
                 }
-                $('#messages').append("<h5 id='typing'>" + typer + typingtext + "</h5>");
+                $('#messages').append("<h5 id='typing'>" + typer + typingNow + "</h5>");
                 typing = setInterval(function () { $("#typing").remove(); }, 1000);
             }
         });
@@ -90,7 +87,7 @@ $(document).ready(function () {
             } else {
                 typer = "";
                 firsttyper = true;
-                typingtext = " is typing 💬";
+                typingNow = " is typing 💬";
                 $("#typing").remove();
                 publicChat('othersMess', "<b>" + msg.name + "</b>: " + msg.message);
             }
