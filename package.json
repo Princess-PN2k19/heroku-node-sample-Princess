@@ -13,11 +13,7 @@
   },
   "keywords": [
     "node",
-    "heroku",
-    "express",
-    "socket.io",
-    "realtime",
-    "websocket"
+    "heroku"
   ],
   "author": "Princess Joy C. Duran",
   "license": "ISC",
@@ -30,7 +26,6 @@
   },
   "dependencies": {
     "express": "^4.17.1",
-    "ip": "^1.1.5",
     "socket.io": "^1.7.4"
   }
 }

@@ -147,6 +147,8 @@ $(document).on("mouseleave", ".newMes", function () {
     $(this).css({ "box-shadow": "none" });
 });
 
+
+
 $(document).on('click', '#close', function () {
     $(this).closest("div").hide();
 });
