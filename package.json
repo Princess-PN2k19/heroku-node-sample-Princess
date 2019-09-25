@@ -12,8 +12,8 @@
     "url": "https://github.com/Princess-PN2k19/heroku-node-sample-Princess.git"
   },
   "keywords": [
-    "Node",
-    "Heroku",
+    "node",
+    "heroku",
     "express",
     "socket.io",
     "realtime",
