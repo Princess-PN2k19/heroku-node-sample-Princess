@@ -108,8 +108,8 @@ html, body {
     margin: 5px;
     border-radius: 25px;
     padding: 4px;
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding-top: 8px;
+    padding-bottom: 8px;
     width: 50px;
     border-color: #cc99ff;
     color: #cc99ff;
@@ -260,7 +260,7 @@ html, body {
   }
   #chat {
     width: 62px;
-    padding: 15px;
+    padding: 8px;
     border-radius: 30px;
     font-size: 17px;
      box-shadow: 0px 3px 40px #eeb8f5;
