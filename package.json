@@ -1,0 +1,29 @@
+{
+  "name": "heroku-node-sample-princess",
+  "version": "1.0.0",
+  "description": "A simple node app deployed to Heroku.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Princess-PN2k19/heroku-node-sample-Princess.git"
+  },
+  "keywords": [
+    "Node",
+    "Heroku"
+  ],
+  "author": "Princess Joy C. Duran",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Princess-PN2k19/heroku-node-sample-Princess/issues"
+  },
+  "homepage": "https://github.com/Princess-PN2k19/heroku-node-sample-Princess#readme",
+  "engines": {
+    "node": "10.15"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
