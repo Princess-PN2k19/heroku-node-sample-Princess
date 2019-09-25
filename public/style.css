@@ -5,10 +5,11 @@ html, body {
     width: 100%;
     margin: 0;
     padding: 0;
+    font: 13px Helvetica, Arial;
+    color: black
 }
-  body { font: 13px Helvetica, Arial; color: black;}
 
-  #inputName { 
+  #name { 
     width: 250px;
     margin-bottom: 10px;
     padding-top: 8%;
@@ -87,7 +88,7 @@ html, body {
     margin-right: 0;
     width: 100%;
   }
-  #messagesHolder {
+  #messagesBox {
     margin-left: 0;
     margin-right: 0;
     margin-top: 0;
@@ -247,7 +248,7 @@ html, body {
     padding-top: 10px;
     margin: 0;
   }
-  .Ouser {
+  .otherUsers {
     width: 100%;
     padding:10px;
     padding-top: 5px;
@@ -282,13 +283,12 @@ html, body {
     height: 100%;
     border-left:1px solid #cc99ff;
     overflow: auto;
-    padding: 15px;
-
+    padding: 0px;
     text-align: left;
     padding-right: 0;
     margin-right: 0;
   } 
-  #otherConvo{
+  #otherPM{
     overflow: auto;
     border-right: 1px solid #cc99ff;
     height: 100%;
