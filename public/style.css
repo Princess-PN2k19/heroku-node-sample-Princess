@@ -43,14 +43,14 @@ body { font: 13px Helvetica, Arial; color: black;}
   padding: 5px 10px;
 }
 #messages li:nth-child(odd) { 
-  background: #eee; 
+  background: #ffe6ff; 
 }
 #messages { 
   margin-bottom: 40px
 }
 #m {         
   border:2px solid #cc99ff;
-  color:  #cc99ff;
+  color:  #ffb3ff;
   box-shadow: 0px 3px 40px #eeb8f5;
 }
 #typing {
@@ -91,16 +91,16 @@ body { font: 13px Helvetica, Arial; color: black;}
   margin-top: 0;
   height: 90%;
   overflow: auto;
+  background-color: #ffe6ff;
 }
 #header {
   height: 60px;
   position: fixed;
   z-index: 9999;
-  background-color: grey;
   width: 100%;
   margin: 0;
   overflow: hidden;
-  background-color: grey;
+  background-color: #ffe6ff;
   box-shadow: 0px 7px 10px #f2e3fa;
   border-bottom:2px solid #cc99ff;
 }
@@ -263,9 +263,9 @@ body { font: 13px Helvetica, Arial; color: black;}
   padding: 8px;
   border-radius: 30px;
   font-size: 17px;
-   box-shadow: 0px 3px 40px #eeb8f5;
-   border:2px solid #cc99ff;
-  color:  #cc99ff;
+  box-shadow: 0px 3px 40px #eeb8f5;
+  border:2px solid #cc99ff;
+  color:  #ffb3ff;
 }
  #main {
   height: 100%;
