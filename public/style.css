@@ -33,7 +33,7 @@ html, body {
     outline: none;
   }
   ::placeholder {
-    color:#cc99ff; 
+    color:black; 
   }
 #messages { 
   list-style-type: none; 
