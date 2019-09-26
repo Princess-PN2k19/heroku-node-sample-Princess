@@ -3,15 +3,13 @@ var id = "";
 var typer = "";
 var socket = io();
 var typing = 0;
-var typingpm = 0;
-var stilltying = false;
+var pmTyping = 0;
+var nowTyping = false;
 var firsttyper = true;
-var listOfUsers = [];
+var Users = [];
 var conversations = [];
-var typingtext = " is now typing 💬";
-var mesId = 0;
-
-
+var currentlyTyping = " is now typing 💬";
+var msgID = 0;
 
 $(document).ready(function () {
 
@@ -21,9 +19,9 @@ $(document).ready(function () {
             id += (Math.floor((Math.random() * 9) + 0)).toString();
         }
         socket.on('user login', function (msg) {
-            if (!listOfUsers.includes(msg.name + ": " + msg.id) && msg.id != id) {
-                listOfUsers.push(msg.name + ": " + msg.id);
-                $('#activeUsers').append("<div class='otherUser' id='" + msg.id + msg.name + "'><h3 id='User'>" + msg.name + "</h3><span id='userId'>" + msg.id + "</span></div>");
+            if (!Users.includes(msg.name + ": " + msg.id) && msg.id != id) {
+                Users.push(msg.name + ": " + msg.id);
+                $('#activeUsers').append("<div class='activeUsers' id='" + msg.id + msg.name + "'><h3 id='User'>" + msg.name + "</h3><span id='userId'>" + msg.id + "</span></div>");
                 socket.emit('user login', { id: id, name: uname });
             }
         });
@@ -34,7 +32,7 @@ $(document).ready(function () {
             } else {
                 typer = "";
                 firsttyper = true;
-                typingtext = " is typing 💬";
+                currentlyTyping = " is typing 💬";
                 $("#typing").remove();
                 publicChat('othersMess', "<b>" + msg.name + "</b>: " + msg.message);
             }
@@ -45,22 +43,22 @@ $(document).ready(function () {
                     conversations.push(msg.name + msg.id);
                     privateChat(msg.name + msg.id, msg.name, msg.message);
                 } else {
-                    $("#" + msg.name + msg.id).find("#typingpm").remove();
-                    $("#" + msg.name + msg.id).find("#pm").append("<div class='pmdivh'><div class='pmdiv' id='ntm'><p id='PM'><b>" + msg.name + "</b>: " + msg.message + "</p></div></div>");
+                    $("#" + msg.name + msg.id).find("#pmTyping").remove();
+                    $("#" + msg.name + msg.id).find("#pm").append("<div class='divPMh'><div class='divPM' id='ntm'><p id='PM'><b>" + msg.name + "</b>: " + msg.message + "</p></div></div>");
                     $("#" + msg.name + msg.id).show();
                 }
             } else if (msg.name + msg.id == uname + id) {
-                $("#" + msg.receipient).find("#pm").append("<div class='pmdivh'><div class='pmdiv' id='mm'><p id='PM'><b>Me</b>: " + msg.message + "</p></div></div>");
+                $("#" + msg.receipient).find("#pm").append("<div class='divPMh'><div class='divPM' id='myMsg'><p id='PM'><b>Me</b>: " + msg.message + "</p></div></div>");
             }
         });
 
         socket.on('typing', function (msg) {
             if (msg.type == "private") {
                 if (msg.receipient == uname + id) {
-                    $("#" + msg.name + msg.id).find("#typingpm").remove();
-                    clearInterval(typingpm);
-                    $("#" + msg.name + msg.id).find("#pm").append("<div class='pmdivh' id='typingpm'><div class='typingPM'><p>" + msg.name + " is typing 💬" + "</p></div></div>");
-                    typingpm = setInterval(function () { $("#" + msg.name + msg.id).find("#typingpm").remove(); }, 1000);
+                    $("#" + msg.name + msg.id).find("#pmTyping").remove();
+                    clearInterval(pmTyping);
+                    $("#" + msg.name + msg.id).find("#pm").append("<div class='divPMh' id='pmTyping'><div class='typingPM'><p>" + msg.name + " is typing 💬" + "</p></div></div>");
+                    pmTyping = setInterval(function () { $("#" + msg.name + msg.id).find("#pmTyping").remove(); }, 1000);
                 }
             } else if (msg.id != id && msg.name != uname) {
                 $("#typing").remove();
@@ -70,11 +68,11 @@ $(document).ready(function () {
                         firsttyper = false;
                         typer += msg.name;
                     } else {
-                        typingtext = " are typing 💬";
+                        currentlyTyping = " are typing 💬";
                         typer += " & " + msg.name;
                     }
                 }
-                $('#messages').append("<h5 id='typing'>" + typer + typingtext + "</h5>");
+                $('#messages').append("<h5 id='typing'>" + typer + currentlyTyping + "</h5>");
                 typing = setInterval(function () { $("#typing").remove(); }, 1000);
             }
         });
@@ -121,12 +119,12 @@ $(document).on('keydown', "#m2", function () {
 
 });
 
-$(document).on("mouseenter", ".otherUser", function () {
+$(document).on("mouseenter", ".activeUsers", function () {
     $(this).css({ "background-color": "grey" });
     $(this).css({ "box-shadow": "-5px 5px 5px #cccccc" });
 });
 
-$(document).on("mouseleave", ".otherUser", function () {
+$(document).on("mouseleave", ".activeUsers", function () {
     $(this).css({ "background-color": "transparent" });
     $(this).css({ "box-shadow": "none" });
 });
@@ -161,7 +159,7 @@ function publicChat(divType, message) {
     $('#messages').append("<div id='mesDivHolder'><div class='newMes' id='" + divType + "'><h5 id='me'>" + message + "</h5></div><div>");
 }
 
-$(document).on('click', '.otherUser', function () {
+$(document).on('click', '.activeUsers', function () {
     if (!conversations.includes($(this).find("#User").text() + $(this).find("#userId").text())) {
         conversations.push($(this).find("#User").text() + $(this).find("#userId").text());
         privateChat($(this).find("#User").text() + $(this).find("#userId").text(), $(this).find("#User").text(), "Hi:)");
@@ -172,7 +170,7 @@ $(document).on('click', '.otherUser', function () {
 
 function privateChat(converId, name, pmessage) {
     $('#chatboxes').prepend("<div id='" + converId + "' class='newChatWindow'><p id='close'>x</p><h3 id='chatmateName'>" + name + "</h3><div id='pmholder'><p id='pm'></p></div><form id='chatbox2'><input id='m2' autofocus='' autocomplete='off' placeholder='Send a message'/></form></div>");
-    $("#" + converId).find("#pm").append("<div class='pmdivh'><div class='pmdiv' id='ntm'><p id='PM'><b>" + name + "</b>: " + pmessage + "</p></div></div>");
+    $("#" + converId).find("#pm").append("<div class='divPMh'><div class='divPM' id='ntm'><p id='PM'><b>" + name + "</b>: " + pmessage + "</p></div></div>");
 }
 
 $(document).on('submit', "#chatbox2", function (e) {

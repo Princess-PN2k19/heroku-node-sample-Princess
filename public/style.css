@@ -53,7 +53,7 @@ html, body {
   margin-bottom: 40px
 }
 #msg {         
-  border:2px solid #cc99ff;
+  border:2px solid #ffb3ff;
   color:  black;
   box-shadow: 0px 3px 40px #eeb8f5;
 }
@@ -191,7 +191,7 @@ html, body {
   margin-top:10px;
   height: 33px;
 }
-#mm {
+#myMsg {
   float: right;
   margin-left: 10%;
    background-color: #e4bff5;
@@ -201,7 +201,7 @@ html, body {
   margin-right:10%;
   background-color: #eebcf5;
 }
-.pmdiv {
+.divPM {
   background-color: #cccccc;
   margin-right: 5px;
   margin-left: 5px;
@@ -215,7 +215,7 @@ html, body {
   float: right;
   text-align: center;
 }
-.pmdivh {
+.divPMh {
   padding-right: 0;
   margin-top:10px;
   height: 25px;
@@ -229,7 +229,7 @@ html, body {
 .typingPM {
   float: left;
 }
-.otherUser {
+.activeUsers {
   width: 100%;
   margin-left: 0;
   padding-top: 0px;
