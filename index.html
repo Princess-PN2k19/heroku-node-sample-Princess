@@ -16,7 +16,7 @@
 <body>
 
     <center>
-        <form id="inputName" action="">
+        <form id="name" action="">
             <div class="form-group">
                 <img src="chat.png">
                 <h1>Chat Pink</h1>
@@ -31,7 +31,7 @@
         <div class="row" id="header"><button class="btn btn-default" id="logout">Logout</button>
             <h2 class="uname"></h2>
         </div>
-        <div id="mainbody" class="row">
+        <div id="appBody" class="row">
             <div class="col-sm-3" id="active">
                 <div class="Ouser">
                     <h4>Active Users:</h4>
@@ -39,14 +39,14 @@
                 <span id="activeUsers"></span>
             </div>
             <div class="col-sm-5" id="main">
-                <div id="messagesHolder">
+                <div id="msgContainer">
                     <div id="messages"></div>
                 </div>
                 <form autocomplete='off' id="chatbox" action="">
-                    <input id='m' autofocus='' autocomplete='off' placeholder="Send a message" />
+                    <input id='msg' autofocus='' autocomplete='off' placeholder="Send a message" />
                 </form>
             </div>
-            <div class="col-sm-4" id="otherConvo">
+            <div class="col-sm-4" id="privateMessages">
                 <ul id="chatboxes"></ul>
             </div>
         </div>

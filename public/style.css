@@ -8,8 +8,11 @@ html, body {
   font: 13px Helvetica, Arial; 
   color: black;
 }
-
-#inputName { 
+#appBody {
+  height: 100%;
+  padding-top: 60px;
+}
+#name { 
   width: 250px;
   margin-bottom: 10px;
   padding-top: 8%;
@@ -33,7 +36,7 @@ html, body {
     outline: none;
   }
   ::placeholder {
-    color:black; 
+    color:#cc99ff; 
   }
 #messages { 
   list-style-type: none; 
@@ -49,9 +52,9 @@ html, body {
 #messages { 
   margin-bottom: 40px
 }
-#m {         
+#msg {         
   border:2px solid #cc99ff;
-  color:  #ffb3ff;
+  color:  black;
   box-shadow: 0px 3px 40px #eeb8f5;
 }
 #typing {
@@ -86,7 +89,7 @@ html, body {
   margin-right: 0;
   width: 100%;
 }
-#messagesHolder {
+#msgContainer {
   margin-left: 0;
   margin-right: 0;
   margin-top: 0;
@@ -286,7 +289,7 @@ html, body {
   padding-right: 0;
   margin-right: 0;
 } 
-#otherConvo{
+#privateMessages{
   overflow: auto;
   border-right: 1px solid #cc99ff;
   height: 100%;
@@ -302,8 +305,4 @@ html, body {
   height: 400px;
   border:1px solid #cc99ff;
   box-shadow: -5px 5px 5px #cccccc;
-}
-#mainbody {
-  height: 100%;
-  padding-top: 60px;
 }
