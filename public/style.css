@@ -8,6 +8,18 @@ html, body {
   font: 13px Helvetica, Arial; 
   color: black;
 }
+a.logo {
+  font-size: 25px;
+  font-weight: bold;
+}
+.imgLogo {
+  margin-top: -50px;
+  float: left;
+  width: 300px;
+  height: 220px;
+  z-index: 1px;
+  border-radius: 70%;
+}
 #appBody {
   height: 100%;
   padding-top: 60px;
