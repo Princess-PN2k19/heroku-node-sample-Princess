@@ -9,6 +9,7 @@ html, body {
   color: black;
 }
 a.logo {
+  position: relative;
   font-size: 25px;
   font-weight: bold;
 }
