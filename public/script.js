@@ -162,7 +162,7 @@ function publicChat(divType, message) {
 $(document).on('click', '.activeUsers', function () {
     if (!conversations.includes($(this).find("#User").text() + $(this).find("#userId").text())) {
         conversations.push($(this).find("#User").text() + $(this).find("#userId").text());
-        // privateChat($(this).find("#User").text() + $(this).find("#userId").text(), $(this).find("#User").text(), "Hi:)");
+        privateChat($(this).find("#User").text() + $(this).find("#userId").text(), $(this).find("#User").text(), "()");
     } else {
         $("#" + $(this).find("#User").text() + $(this).find("#userId").text()).show();
     }
